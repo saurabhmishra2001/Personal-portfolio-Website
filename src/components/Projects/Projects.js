@@ -26,12 +26,8 @@ function Projects() {
             imgPath={MeetMind}
             isBlog={false}
             title="MeetMind"
-            description="MeetMind is an AI-powered meeting intelligence platform that turns conversations into actionable insights, allowing teams to focus on discussions while AI handles notes.
-            Key Features:
-            Real-time Transcription: High-accuracy speech-to-text in English.
-            Smart AI Summaries: Automatically generates meeting minutes, action items, and key decisions.
-            Interactive AI Chat: Chat with meetings to recall details
-            "ghLink="https://github.com/saurabhmishra2001/MeetMind"
+            description="MeetMind is an AI-powered meeting intelligence platform that turns conversations into actionable insights, allowing teams to focus on discussions while AI handles notes. Key Features: Real-time Transcription, Smart AI Summaries, Interactive AI Chat."
+            ghLink="https://github.com/saurabhmishra2001/MeetMind"
             demoLink="https://meet-mind-emu6bhe0y-saurabhmishra2001s-projects.vercel.app/"
           />
        

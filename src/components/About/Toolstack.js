@@ -1,11 +1,13 @@
 import React from "react";
-import { SiVisualstudiocode, SiPostman, SiGooglechrome, SiVercel, SiWindows11 } from "react-icons/si";
+import { SiPostman, SiGooglechrome, SiVercel } from "react-icons/si";
+import { FaWindows } from "react-icons/fa";
+import { VscVscode } from "react-icons/vsc";
 import { motion } from "framer-motion";
 
 function Toolstack() {
   const tools = [
-    { icon: <SiWindows11 />, name: "Windows 11" },
-    { icon: <SiVisualstudiocode />, name: "VS Code" },
+    { icon: <FaWindows />, name: "Windows" },
+    { icon: <VscVscode />, name: "VS Code" },
     { icon: <SiPostman />, name: "Postman" },
     { icon: <SiGooglechrome />, name: "Chrome" },
     { icon: <SiVercel />, name: "Vercel" }
