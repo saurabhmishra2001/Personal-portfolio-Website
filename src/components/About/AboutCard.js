@@ -1,5 +1,4 @@
 import React from "react";
-import { ImPointRight } from "react-icons/im";
 import { motion } from "framer-motion";
 
 const HOBBIES = [

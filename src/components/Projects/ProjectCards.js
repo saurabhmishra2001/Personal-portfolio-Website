@@ -1,8 +1,7 @@
 import React, { useState } from "react";
-import { CgWebsite } from "react-icons/cg";
 import { BsGithub, BsArrowUpRightCircle } from "react-icons/bs";
 import { HiSparkles } from "react-icons/hi2";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 
 /* ── Tag colour mapping ─────────────────────────────────── */
 const TAG_CLASS = {

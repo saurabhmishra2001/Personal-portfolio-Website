@@ -1,5 +1,5 @@
 import React from "react";
-import { SiPostman, SiGooglechrome, SiVercel, SiDocker, SiGithub } from "react-icons/si";
+import { SiPostman, SiGooglechrome, SiVercel, SiGithub } from "react-icons/si";
 import { FaWindows } from "react-icons/fa";
 import { VscVscode } from "react-icons/vsc";
 import { motion } from "framer-motion";
