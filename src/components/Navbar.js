@@ -1,130 +1,140 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-scroll";
 import { motion, AnimatePresence } from "framer-motion";
-import { 
-  AiOutlineHome, 
-  AiOutlineUser, 
-  AiOutlineFundProjectionScreen, 
+import {
+  AiOutlineHome,
+  AiOutlineUser,
+  AiOutlineFundProjectionScreen,
   AiFillStar,
   AiOutlineMenu,
-  AiOutlineClose
+  AiOutlineClose,
 } from "react-icons/ai";
 import { CgFileDocument, CgGitFork } from "react-icons/cg";
 
-function NavBar() {
-  const [expand, updateExpanded] = useState(false);
-  const [navColour, updateNavbar] = useState(false);
+const NAV_ITEMS = [
+  { to: "home",    icon: <AiOutlineHome />,                    label: "Home" },
+  { to: "about",   icon: <AiOutlineUser />,                    label: "About" },
+  { to: "project", icon: <AiOutlineFundProjectionScreen />,    label: "Projects" },
+  { to: "resume",  icon: <CgFileDocument />,                   label: "Resume" },
+];
 
-  function scrollHandler() {
-    if (window.scrollY >= 20) {
-      updateNavbar(true);
-    } else {
-      updateNavbar(false);
-    }
-  }
+function NavBar() {
+  const [expand, setExpand] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const [activeSection, setActiveSection] = useState("home");
 
   useEffect(() => {
-    window.addEventListener("scroll", scrollHandler);
-    return () => window.removeEventListener("scroll", scrollHandler);
+    const onScroll = () => setScrolled(window.scrollY >= 20);
+    window.addEventListener("scroll", onScroll);
+    return () => window.removeEventListener("scroll", onScroll);
   }, []);
-
-  const navVariants = {
-    hidden: { y: -100, opacity: 0 },
-    visible: { 
-      y: 0, 
-      opacity: 1,
-      transition: { duration: 0.5, ease: "easeOut" }
-    }
-  };
-
-  const menuVariants = {
-    closed: { x: "100%", opacity: 0 },
-    open: { 
-      x: 0, 
-      opacity: 1,
-      transition: { duration: 0.4, ease: "easeInOut" }
-    }
-  };
 
   return (
     <motion.nav
-      initial="hidden"
-      animate="visible"
-      variants={navVariants}
-      className={`fixed w-full top-0 z-50 transition-all duration-300 ${
-        navColour ? "bg-opacity-80 backdrop-blur-md bg-[#0f0c29] shadow-lg border-b border-white/5" : "bg-transparent py-4"
+      initial={{ y: -80, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+      className={`fixed w-full top-0 z-50 transition-all duration-400 ${
+        scrolled
+          ? "nav-glass shadow-[0_4px_30px_rgba(0,0,0,0.4)]"
+          : "bg-transparent"
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
-          {/* Logo */}
-          <div className="flex-shrink-0">
-            <Link 
-              to="home" 
-              smooth={true} 
-              duration={500} 
-              className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-[#c770f0] to-[#2575fc] hover:opacity-80 transition-opacity cursor-pointer" 
-              onClick={() => updateExpanded(false)}
+
+          {/* ── Logo ──────────────────────────────────── */}
+          <Link
+            to="home"
+            smooth={true}
+            duration={500}
+            onClick={() => setExpand(false)}
+            className="cursor-pointer flex items-center gap-2 group"
+          >
+            <div
+              className="w-8 h-8 rounded-lg flex items-center justify-center text-white text-xs font-black"
+              style={{ background: "linear-gradient(135deg, #6a11cb, #c770f0)" }}
+            >
+              SM
+            </div>
+            <span
+              className="text-xl font-bold"
+              style={{
+                fontFamily: "'Space Grotesk', sans-serif",
+                background: "linear-gradient(135deg, #c770f0, #2575fc)",
+                WebkitBackgroundClip: "text",
+                WebkitTextFillColor: "transparent",
+                backgroundClip: "text",
+              }}
             >
               Sk.M.
-            </Link>
-          </div>
+            </span>
+          </Link>
 
-          {/* Desktop Menu */}
-          <div className="hidden md:block">
-            <div className="ml-10 flex items-baseline space-x-6">
-              <NavItem to="home" icon={<AiOutlineHome />} label="Home" />
-              <NavItem to="about" icon={<AiOutlineUser />} label="About" />
-              <NavItem to="project" icon={<AiOutlineFundProjectionScreen />} label="Projects" />
-              <NavItem to="resume" icon={<CgFileDocument />} label="Resume" />
-              
-              <a
-                href="https://github.com/saurabhmishra2001/Personal-portfolio-Website"
-                target="_blank"
-                rel="noreferrer"
-                className="flex items-center gap-1 px-4 py-2 bg-[#6a11cb]/20 border border-[#6a11cb] rounded-md text-white hover:bg-[#6a11cb]/40 transition-colors"
-              >
-                <CgGitFork className="text-lg" /> <AiFillStar className="text-lg" />
-              </a>
-            </div>
-          </div>
+          {/* ── Desktop Menu ──────────────────────────── */}
+          <div className="hidden md:flex items-center gap-1">
+            {NAV_ITEMS.map((item) => (
+              <NavItem
+                key={item.to}
+                {...item}
+                isActive={activeSection === item.to}
+                onSetActive={() => setActiveSection(item.to)}
+              />
+            ))}
 
-          {/* Mobile menu button */}
-          <div className="-mr-2 flex md:hidden">
-            <button
-              onClick={() => updateExpanded(!expand)}
-              className="inline-flex items-center justify-center p-2 rounded-md text-white hover:text-[#c770f0] focus:outline-none"
+            {/* GitHub star button */}
+            <a
+              href="https://github.com/saurabhmishra2001/Personal-portfolio-Website"
+              target="_blank"
+              rel="noreferrer"
+              title="Star on GitHub"
+              className="ml-3 flex items-center gap-1.5 px-4 py-2 rounded-xl text-sm font-semibold text-white border border-[#c770f0]/40 bg-[#c770f0]/10 hover:bg-[#c770f0]/20 hover:border-[#c770f0]/60 transition-all duration-300"
             >
-              {expand ? <AiOutlineClose size={24} /> : <AiOutlineMenu size={24} />}
-            </button>
+              <CgGitFork className="text-base" />
+              <AiFillStar className="text-base text-yellow-400" />
+            </a>
           </div>
+
+          {/* ── Mobile Hamburger ──────────────────────── */}
+          <button
+            onClick={() => setExpand(!expand)}
+            className="md:hidden p-2 rounded-xl border border-white/10 bg-white/5 text-white hover:bg-white/10 transition-all duration-200 focus:outline-none"
+          >
+            {expand ? <AiOutlineClose size={20} /> : <AiOutlineMenu size={20} />}
+          </button>
         </div>
       </div>
 
-      {/* Mobile Menu */}
+      {/* ── Mobile Menu ───────────────────────────────── */}
       <AnimatePresence>
         {expand && (
           <motion.div
-            initial="closed"
-            animate="open"
-            exit="closed"
-            variants={menuVariants}
-            className="md:hidden fixed inset-0 top-16 z-40 bg-[#0f0c29]/95 backdrop-blur-xl border-t border-white/10 h-screen"
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            transition={{ duration: 0.3, ease: "easeInOut" }}
+            className="md:hidden absolute top-16 left-0 right-0 z-40 mx-4 rounded-2xl border border-white/[0.08] overflow-hidden"
+            style={{ background: "rgba(10,8,24,0.95)", backdropFilter: "blur(24px)" }}
           >
-            <div className="px-4 pt-4 pb-3 space-y-2 flex flex-col items-center justify-center h-full">
-              <MobileNavItem to="home" icon={<AiOutlineHome />} label="Home" onClick={() => updateExpanded(false)} />
-              <MobileNavItem to="about" icon={<AiOutlineUser />} label="About" onClick={() => updateExpanded(false)} />
-              <MobileNavItem to="project" icon={<AiOutlineFundProjectionScreen />} label="Projects" onClick={() => updateExpanded(false)} />
-              <MobileNavItem to="resume" icon={<CgFileDocument />} label="Resume" onClick={() => updateExpanded(false)} />
-              
-              <a
-                href="https://github.com/saurabhmishra2001/Personal-portfolio-Website"
-                target="_blank"
-                rel="noreferrer"
-                className="mt-4 flex items-center gap-2 px-6 py-3 bg-[#6a11cb] rounded-full text-white font-medium hover:bg-[#5a0ebb] transition-transform active:scale-95"
-              >
-                <CgGitFork /> Star on GitHub
-              </a>
+            <div className="p-4 space-y-1">
+              {NAV_ITEMS.map((item) => (
+                <MobileNavItem
+                  key={item.to}
+                  {...item}
+                  onClick={() => setExpand(false)}
+                />
+              ))}
+              <div className="pt-3 border-t border-white/[0.06] mt-3">
+                <a
+                  href="https://github.com/saurabhmishra2001/Personal-portfolio-Website"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="flex items-center justify-center gap-2 w-full py-3 rounded-xl text-sm font-semibold text-white transition-all duration-300"
+                  style={{ background: "linear-gradient(135deg, #6a11cb, #c770f0)" }}
+                >
+                  <CgGitFork /> <AiFillStar className="text-yellow-400" /> Star on GitHub
+                </a>
+              </div>
             </div>
           </motion.div>
         )}
@@ -133,20 +143,22 @@ function NavBar() {
   );
 }
 
-function NavItem({ to, icon, label }) {
+function NavItem({ to, icon, label, onSetActive }) {
   return (
     <Link
-      activeClass="text-[#c770f0] bg-white/10"
+      activeClass="active-nav"
       to={to}
       spy={true}
       smooth={true}
       offset={-70}
       duration={500}
-      className="flex items-center gap-1.5 px-3 py-2 rounded-md text-sm font-medium text-gray-300 hover:text-white hover:bg-white/10 transition-all relative group cursor-pointer"
+      onSetActive={onSetActive}
+      className="relative flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-sm font-medium text-gray-400 hover:text-white transition-all duration-200 cursor-pointer group"
     >
-      <span className="text-lg group-hover:text-[#c770f0] transition-colors">{icon}</span>
+      <span className="text-base group-hover:text-[#c770f0] transition-colors duration-200">{icon}</span>
       {label}
-      <span className="absolute bottom-1 left-3 w-0 h-0.5 bg-[#c770f0] transition-all group-hover:w-[calc(100%-24px)]" />
+      {/* Active underline */}
+      <span className="absolute bottom-1 left-3.5 w-0 h-0.5 bg-gradient-to-r from-[#c770f0] to-[#2575fc] rounded-full transition-all duration-300 group-hover:w-[calc(100%-28px)]" />
     </Link>
   );
 }
@@ -154,21 +166,18 @@ function NavItem({ to, icon, label }) {
 function MobileNavItem({ to, icon, label, onClick }) {
   return (
     <Link
-      activeClass="text-[#c770f0]"
       to={to}
       spy={true}
       smooth={true}
       offset={-70}
       duration={500}
       onClick={onClick}
-      className="flex items-center gap-3 px-6 py-4 text-xl font-medium text-white hover:text-[#c770f0] transition-colors w-full justify-center border-b border-white/5 cursor-pointer"
+      className="flex items-center gap-3 px-4 py-3.5 rounded-xl text-base font-medium text-gray-300 hover:text-white hover:bg-white/5 transition-all duration-200 cursor-pointer group"
     >
-      <span className="text-2xl text-[#c770f0]">{icon}</span>
+      <span className="text-xl text-[#c770f0]">{icon}</span>
       {label}
     </Link>
   );
 }
 
 export default NavBar;
-
-

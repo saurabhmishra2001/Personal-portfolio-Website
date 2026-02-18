@@ -1,38 +1,54 @@
 import React from "react";
-import { SiPostman, SiGooglechrome, SiVercel } from "react-icons/si";
+import { SiPostman, SiGooglechrome, SiVercel, SiDocker, SiGithub } from "react-icons/si";
 import { FaWindows } from "react-icons/fa";
 import { VscVscode } from "react-icons/vsc";
 import { motion } from "framer-motion";
 
-function Toolstack() {
-  const tools = [
-    { icon: <FaWindows />, name: "Windows" },
-    { icon: <VscVscode />, name: "VS Code" },
-    { icon: <SiPostman />, name: "Postman" },
-    { icon: <SiGooglechrome />, name: "Chrome" },
-    { icon: <SiVercel />, name: "Vercel" }
-  ];
+const TOOLS = [
+  { icon: <FaWindows />,       name: "Windows",  color: "#00adef" },
+  { icon: <VscVscode />,       name: "VS Code",  color: "#007acc" },
+  { icon: <SiPostman />,       name: "Postman",  color: "#ff6c37" },
+  { icon: <SiGooglechrome />,  name: "Chrome",   color: "#4285f4" },
+  { icon: <SiVercel />,        name: "Vercel",   color: "#ffffff" },
+  { icon: <SiGithub />,        name: "GitHub",   color: "#e6edf3" },
+];
 
+function Toolstack() {
   return (
-    <div className="flex flex-wrap justify-center gap-8 pb-12">
-      {tools.map((item, index) => (
+    <div className="flex flex-wrap justify-center gap-4 pb-12">
+      {TOOLS.map((item, index) => (
         <motion.div
-           key={index}
-           initial={{ opacity: 0, y: 20 }}
-           whileInView={{ opacity: 1, y: 0 }}
-           transition={{ duration: 0.5, delay: index * 0.1 }}
-           viewport={{ once: true }}
-           className="relative w-36 h-36 flex flex-col items-center justify-center p-4 border border-white/10 rounded-xl bg-gradient-to-br from-white/5 to-white/0 backdrop-blur-md hover:scale-105 hover:border-[#c770f0]/50 hover:shadow-[0_0_30px_rgba(199,112,240,0.3)] transition-all duration-300 group cursor-pointer overflow-hidden"
+          key={index}
+          initial={{ opacity: 0, scale: 0.8 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.4, delay: index * 0.08, ease: [0.22, 1, 0.36, 1] }}
+          viewport={{ once: true }}
+          className="group relative flex flex-col items-center justify-center p-5 w-28 rounded-2xl border border-white/[0.07] cursor-pointer overflow-hidden transition-all duration-300 hover:-translate-y-1"
+          style={{ background: "rgba(14,11,38,0.6)", backdropFilter: "blur(16px)" }}
+          onMouseEnter={(e) => {
+            e.currentTarget.style.borderColor = `${item.color}50`;
+            e.currentTarget.style.boxShadow = `0 8px 30px ${item.color}25`;
+          }}
+          onMouseLeave={(e) => {
+            e.currentTarget.style.borderColor = "rgba(255,255,255,0.07)";
+            e.currentTarget.style.boxShadow = "none";
+          }}
         >
-           {/* Background Glow */}
-           <div className="absolute inset-0 bg-gradient-to-br from-[#c770f0]/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
-           
-           <span className="relative z-10 text-6xl text-white group-hover:text-[#c770f0] group-hover:scale-110 transition-all duration-300 ease-out drop-shadow-lg">
-             {item.icon}
-           </span>
-           <span className="relative z-10 mt-3 text-sm font-medium text-gray-400 group-hover:text-white transition-colors duration-300 translate-y-2 opacity-0 group-hover:opacity-100 group-hover:translate-y-0">
-             {item.name}
-           </span>
+          {/* Background glow */}
+          <div
+            className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none rounded-2xl"
+            style={{ background: `radial-gradient(circle at 50% 30%, ${item.color}15, transparent 70%)` }}
+          />
+
+          <span
+            className="relative z-10 text-4xl mb-2.5 transition-all duration-300 group-hover:scale-110"
+            style={{ color: item.color, filter: `drop-shadow(0 0 8px ${item.color}60)` }}
+          >
+            {item.icon}
+          </span>
+          <span className="relative z-10 text-xs font-semibold text-gray-400 group-hover:text-white transition-colors duration-300">
+            {item.name}
+          </span>
         </motion.div>
       ))}
     </div>
