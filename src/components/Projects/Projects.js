@@ -4,6 +4,7 @@ import ProjectCard from "./ProjectCards";
 import PlanArc from "../../Assets/Projects/PlanArc.png";
 import MeetMind from "../../Assets/Projects/MeetMind.png";
 import AapkiAcademy from "../../Assets/Projects/AapkiAcademy.png";
+import Blogify from "../../Assets/Projects/Blogify.png";
 
 function Projects() {
   return (
@@ -22,7 +23,18 @@ function Projects() {
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
 
-             <ProjectCard
+          
+            <ProjectCard
+            imgPath={Blogify}
+            isBlog={false}
+            title="Blogify"
+            description="Blogify is a feature-rich blogging application that enables users to create, publish, and manage blog posts with a clean, responsive interface. It includes secure user authentication, a rich text editor for crafting content, featured image uploads, and full CRUD functionality for posts. The app leverages Appwrite as a Backend-as-a-Service for database, storage, and auth — eliminating the need for a custom backend. State is managed globally with Redux, and the UI is styled using Tailwind CSS for a modern, mobile-friendly experience."
+            ghLink="https://github.com/saurabhmishra2001/Blogify-"
+            demoLink="https://blogify-self-nu.vercel.app/"
+            tags={["React", "Node.js", "AI", "Tailwind"]}
+          />
+
+            <ProjectCard
             imgPath={MeetMind}
             isBlog={false}
             title="MeetMind"
