@@ -4,7 +4,6 @@ import homeLogo from "../../Assets/home-main.svg";
 import Particle from "../Particle";
 import Home2 from "./Home2";
 import Type from "./Type";
-import { BsArrowDown } from "react-icons/bs";
 import { HiOutlineMail } from "react-icons/hi";
 
 function Home() {
