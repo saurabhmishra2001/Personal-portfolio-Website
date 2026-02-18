@@ -29,6 +29,7 @@ function Projects() {
             description="MeetMind is an AI-powered meeting intelligence platform that turns conversations into actionable insights, allowing teams to focus on discussions while AI handles notes. Key Features: Real-time Transcription, Smart AI Summaries, Interactive AI Chat."
             ghLink="https://github.com/saurabhmishra2001/MeetMind"
             demoLink="https://meet-mind-emu6bhe0y-saurabhmishra2001s-projects.vercel.app/"
+            tags={["React", "Node.js", "AI", "Tailwind"]}
           />
        
 
@@ -39,6 +40,7 @@ function Projects() {
             description="Aapki Academy one-stop platform for comprehensive learning and preparation. Access expert courses, study materials, video lectures, and practice tests."
             ghLink="https://github.com/saurabhmishra2001/aapki_academy"
             demoLink="https://www.aapkiacademy.info/"
+            tags={["React", "Node.js", "MongoDB", "Express"]}
           />
 
             <ProjectCard
@@ -48,6 +50,7 @@ function Projects() {
             description="PlanArc is your all-in-one platform designed to streamline the planning and organization of learning, personal projects, and more. With a focus on structure and simplicity, PlanArc helps users map out their learning journeys, set clear goals, and track progress effectively. Whether you’re a student, a professional, or just looking to organize your day-to-day tasks, PlanArc empowers you to manage your time, prioritize tasks, and achieve your goals with ease. Start planning smarter and take control of your learning and productivity with PlanArc."
             ghLink="https://github.com/saurabhmishra2001/PlanArc"
             demoLink="https://plan-arc-three.vercel.app/"
+            tags={["React", "Node.js", "Productivity", "Tailwind"]}
           />
 
            <ProjectCard
@@ -55,6 +58,7 @@ function Projects() {
             title="ScoreBuzz"
             description="A Web page that will display the scores of all the crickets that were used to play all over the world. It shows all tournament like IPL and all the internatiolan games, this web page is created using React Js, Node js and some of the CSS libirary like bootstrap and tailwind CSS."
             ghLink="https://github.com/saurabhmishra2001/Cricket_App"
+            tags={["React", "Node.js", "Bootstrap", "Tailwind"]}
           />
          
         </div>

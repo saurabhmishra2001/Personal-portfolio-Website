@@ -32,6 +32,19 @@ function ProjectCards(props) {
         <p className="text-gray-300 mb-6 flex-grow text-sm leading-relaxed opacity-90">
           {props.description}
         </p>
+
+        {props.tags && props.tags.length > 0 && (
+          <div className="flex flex-wrap gap-2 mb-6">
+            {props.tags.map((tag, index) => (
+              <span 
+                key={index} 
+                className="px-3 py-1 text-xs font-medium text-white bg-white/10 rounded-full border border-white/10 hover:border-[#c770f0] transition-colors duration-300"
+              >
+                {tag}
+              </span>
+            ))}
+          </div>
+        )}
         
         <div className="flex gap-4 mt-auto">
           <Button href={props.ghLink} icon={<BsGithub />} text={props.isBlog ? "Blog" : "GitHub"} />
