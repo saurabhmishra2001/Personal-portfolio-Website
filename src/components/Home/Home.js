@@ -102,7 +102,7 @@ function Home() {
           {/* CTA Buttons */}
           <div className="flex flex-wrap gap-4 pt-2">
             <a
-              href="mailto:saurabhmishra2001@gmail.com"
+              href="mailto:saurabhmishra99352@gmail.com"
               className="relative inline-flex items-center gap-2 px-8 py-3.5 rounded-2xl text-white font-bold text-base transition-all duration-300 hover:-translate-y-1 animate-pulse-ring"
               style={{
                 background: "linear-gradient(135deg, #6a11cb 0%, #c770f0 100%)",

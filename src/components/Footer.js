@@ -55,7 +55,7 @@ function Footer() {
             {/* Social icons */}
             <div className="flex gap-3 pt-1">
               <FooterSocialIcon href="https://github.com/saurabhmishra2001" icon={<AiFillGithub />} label="GitHub" />
-              <FooterSocialIcon href="https://www.linkedin.com/in/saurabhmishra2001/" icon={<FaLinkedinIn />} label="LinkedIn" />
+              <FooterSocialIcon href="https://www.linkedin.com/in/saurabh-kumar-mishra-99352s" icon={<FaLinkedinIn />} label="LinkedIn" />
               <FooterSocialIcon href="https://www.instagram.com/saurabh_mishra_/" icon={<AiFillInstagram />} label="Instagram" />
             </div>
           </div>
@@ -100,11 +100,11 @@ function Footer() {
               Get In Touch
             </h4>
             <a
-              href="mailto:saurabhmishra2001@gmail.com"
+              href="mailto:saurabhmishra99352@gmail.com"
               className="inline-flex items-center gap-2 text-gray-400 hover:text-[#c770f0] text-sm transition-colors duration-200 mb-4"
             >
               <HiOutlineMail className="text-base" />
-              saurabhmishra2001@gmail.com
+              saurabhmishra99352@gmail.com
             </a>
             <p className="text-gray-600 text-xs mt-3 leading-relaxed">
               Open to freelance projects, full-time roles, and interesting collaborations.

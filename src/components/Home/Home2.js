@@ -199,7 +199,7 @@ function Home2() {
 
           <div className="flex justify-center gap-5">
             <SocialIcon href="https://github.com/saurabhmishra2001" icon={<AiFillGithub />} label="GitHub" color="#c770f0" />
-            <SocialIcon href="https://www.linkedin.com/in/saurabhmishra2001/" icon={<FaLinkedinIn />} label="LinkedIn" color="#2575fc" />
+            <SocialIcon href="https://www.linkedin.com/in/saurabh-kumar-mishra-99352s" icon={<FaLinkedinIn />} label="LinkedIn" color="#2575fc" />
             <SocialIcon href="https://www.instagram.com/saurabh_mishra_/" icon={<AiFillInstagram />} label="Instagram" color="#e1306c" />
           </div>
         </motion.div>
