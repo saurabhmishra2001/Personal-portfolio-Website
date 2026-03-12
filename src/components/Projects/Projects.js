@@ -33,7 +33,7 @@ const ALL_PROJECTS = [
     description:
       "MeetMind is an AI-powered meeting intelligence platform that turns conversations into actionable insights, allowing teams to focus on discussions while AI handles notes. Key Features: Real-time Transcription, Smart AI Summaries, Interactive AI Chat, Sentiment Analysis, and Meeting Analytics Dashboard.",
     ghLink: "https://github.com/saurabhmishra2001/MeetMind",
-    demoLink: "https://meet-mind-emu6bhe0y-saurabhmishra2001s-projects.vercel.app/",
+    demoLink: "https://meet-mind-kappa.vercel.app/",
     tags: ["React", "Node.js", "AI", "Tailwind"],
     category: "AI",
     featured: true,
